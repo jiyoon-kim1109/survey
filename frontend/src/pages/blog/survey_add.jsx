@@ -1,198 +1,142 @@
 import React from "react";
-import HeaderBlogDetails from "../../componets/blog/header/header_blog_details";
-import HeroBlogDetails from "../../componets/blog/hero/hero_blog_details";
+import HeaderBlogDetails from "../../componets/blog/header/header_blog";
+import HeroSurveyDetails from "../../componets/blog/hero/hero_survey_details";
 import Footer from "../../componets/multiple/footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+
+import AuthService from "../../services/auth.service";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faMinus} from "@fortawesome/free-solid-svg-icons/faMinus";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faChevronDown} from "@fortawesome/free-solid-svg-icons/faChevronDown";
+import FormQuestion from "../../componets/blog/form/form_question";
+
+import Emitter from '../../services/emitter.service';
 
 class SurveyAddPage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        console.log(props);
+        console.log(this.state);
+        this.state = {
+            currentUser: AuthService.getCurrentUser(),
+            question_no: 0,
+            questions: []
+        }
+    }
 
     componentDidMount() {
         document.body.classList.add('version-blog');
         document.body.classList.add('parent-active');
+        Emitter.on('GET_QUESTION_INPUT', (newValue) => this.setState({ questions: newValue }));
     }
 
     componentWillUnmount() {
         document.body.classList.remove('parent-active');
         document.body.classList.remove('version-blog');
+        Emitter.off('GET_QUESTION_INPUT');
+    }
+
+    addQuestion(question_no) {
+        this.setState({
+                question_no: question_no + 1
+            }
+        )
+    }
+
+    handleInputChange = (event) => {
+        const {value, name} = event.target;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleForm(event) {
+        event.preventDefault();
+        Emitter.emit('REQ_QUESTION', 1);
+        console.log(event);
+        // AuthService.login(this.state.email, this.state.password).then(
+        //     () => {
+        //         console.log('came back');
+        //         // this.props.history.push("/users");
+        //         // window.location.reload();
+        //     },
+        //     error => {
+        //         const resMessage =
+        //             (error.response &&
+        //                 error.response.data &&
+        //                 error.response.data.message) ||
+        //             error.message ||
+        //             error.toString();
+        //
+        //         this.setState({
+        //             loading: false,
+        //             message: resMessage
+        //         });
+        //     }
+        // );
     }
 
     render() {
+
+        const currentUser = this.state.currentUser;
+        const question_no = this.state.question_no;
+
+        let FormQuestions = [];
+        for (var i = 0; i < question_no; i++) {
+            FormQuestions.push(<FormQuestion key={i} question_no={i} />);
+        }
+
         return (
             <>
                 <HeaderBlogDetails headerId={`header7`}/>
-                <HeroBlogDetails />
+                <HeroSurveyDetails post={null} title="Add New Survey"/>
                 <section className="blog-post section-gap">
                     <div className="details-body">
                         <div className="container">
-                            <h2 className="head">We Made our Software Errorless</h2>
-                            <p>
-                                The first is a non technical method which requires the use of
-                                adware removal software. Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <p>
-                                The first is a non technical method which requires the use of
-                                adware removal software. Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.
-                            </p>
-                            <blockquote className="blog-quotes">
-                                “The first is a non technical method which requires the use of
-                                adware removal software. Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua.”
-                            </blockquote>
-                            <div className="mb-30 text-center">
-                                <img
-                                    src="/img/blog/blog-details-bg2.jpg"
-                                    className="img-fluid"
-                                    alt=""
-                                />
-                            </div>
-                            <p>
-                                The first is a non technical method which requires the use of
-                                adware removal software. Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                            <div className="mt-40 mb-20">
-                                <hr />
-                            </div>
-                            <div className="post-links">
-                                <div className="d-flex align-items-center justify-content-between">
-                                    <div className="prev-post d-flex relative align-items-center">
-                                        <div>
-                                            <Link className="post-link" to="/blog/details" style={{ cursor: "pointer"}}>
-                                                <FontAwesomeIcon className="mr-1" icon={faArrowLeft} />
-                                            </Link>
-                                        </div>
-                                        <div className="ml-3 relative">
-                                            <p className="mb-0">Next post</p>
-                                        </div>
-                                    </div>
-                                    <div className="next-post d-flex relative align-items-center">
-                                        <div className="mr-3 relative">
-                                            <p className="mb-0">Next post</p>
-                                        </div>
-                                        <div className>
-                                            <Link className="post-link" to="/blog/details" style={{ cursor: "pointer"}}>
-                                                <FontAwesomeIcon className="mr-1" icon={faArrowRight} />
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="comment-section">
-                                <h4 className="comment-head">
-                                    <span>05</span> Comments
-                                </h4>
-                                <div className="comment d-flex align-items-start">
-                                    <div className="comment-img">
-                                        <img src="/img/blog/comment1.jpg" alt="" />
-                                    </div>
-                                    <div>
-                                        <div className="d-flex align-items-center mb-2">
-                                            <h5>Emilly Blunt</h5>
-                                            <div className="comment-time ml-4">
-                                                December 4, 2018 at 3:12 pm
-                                            </div>
-                                        </div>
-                                        <p>
-                                            The first is a non technical method which requires the use
-                                            of adware removal software. Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing elit.
-                                        </p>
-                                        <div>
-                                            <button className="comment-btn">Reply</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="comment-reply">
-                                    <div className="comment-reply-single">
-                                        <div className="comment d-flex align-items-start">
-                                            <div className="comment-img">
-                                                <img src="/img/blog/reply1.jpg" alt="" />
-                                            </div>
-                                            <div>
-                                                <div className="d-flex align-items-center mb-2">
-                                                    <h5>Elsie Cunningham</h5>
-                                                    <div className="comment-time ml-4">
-                                                        December 4, 2018 at 3:12 pm
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    The first is a non technical method which requires the
-                                                    use of adware removal software. Lorem ipsum dolor sit
-                                                    amet, consectetur adipisicing elit.
-                                                </p>
-                                                <div>
-                                                    <button className="comment-btn">Reply</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="comment d-flex align-items-start">
-                                    <div className="comment-img">
-                                        <img src="/img/blog/comment2.jpg" alt="" />
-                                    </div>
-                                    <div>
-                                        <div className="d-flex align-items-center mb-2">
-                                            <h5>Maria Luna</h5>
-                                            <div className="comment-time ml-4">
-                                                December 4, 2018 at 3:12 pm
-                                            </div>
-                                        </div>
-                                        <p>
-                                            The first is a non technical method which requires the use
-                                            of adware removal software. Lorem ipsum dolor sit amet,
-                                            consectetur adipisicing elit.
-                                        </p>
-                                        <div>
-                                            <button className="comment-btn">Reply</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="post-comment mt-80">
-                                <h4 className="mb-40">Leave a reply</h4>
+                            <div className="post-comment mt-10">
+                                <h4 className="mb-40">Add New Survey</h4>
                                 <div className="post-form">
-                                    <form action="api" method="post">
+                                    <form onSubmit={this.handleForm.bind(this)} method="post">
                                         <div className="row">
                                             <div className="col-lg-6">
                                                 <div className="form-group">
+                                                    <input type="hidden" name="user_id"
+                                                           value={currentUser ? currentUser.id : null}/>
                                                     <input
                                                         type="text"
                                                         className="form-control"
-                                                        name="email"
-                                                        autoComplete="name"
-
-                                                        placeholder="Enter name"
+                                                        name="title"
+                                                        autoComplete="title"
+                                                        onChange={this.handleInputChange}
+                                                        placeholder="Enter title"
                                                         required
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="col-lg-6">
+                                            <div className="col-lg-3">
                                                 <div className="form-group">
                                                     <input
-                                                        type="email"
+                                                        type="date"
                                                         className="form-control"
-                                                        name="email"
-                                                        autoComplete="email"
-
-                                                        placeholder="Enter email address"
-
+                                                        name="start_date"
+                                                        autoComplete="start_date"
+                                                        onChange={this.handleInputChange}
+                                                        placeholder="Enter start date"
+                                                        required
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-3">
+                                                <div className="form-group">
+                                                    <input
+                                                        type="date"
+                                                        className="form-control"
+                                                        name="end_date"
+                                                        autoComplete="end_date"
+                                                        onChange={this.handleInputChange}
+                                                        placeholder="Enter end date"
+                                                        required
                                                     />
                                                 </div>
                                             </div>
@@ -200,20 +144,30 @@ class SurveyAddPage extends React.Component {
                                         <div className="row">
                                             <div className="col-lg-12">
                                                 <div className="form-group">
-                          <textarea
-                              className="form-control"
-                              name
-                              autoComplete="message"
-                              id
-                              rows={5}
-                              placeholder="Enter messages"
-                          />
+                                                    <textarea
+                                                        className="form-control"
+                                                        name="description"
+                                                        autoComplete="description"
+                                                        onChange={this.handleInputChange}
+                                                        rows={2}
+                                                        placeholder="Enter description"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr/>
+                                        <div className="row">
+                                            <div className="col-lg-12">
+                                                <p onClick={() => this.addQuestion(question_no)} className="">
+                                                    <FontAwesomeIcon icon={faPlus} className="mr-1"/> Open New
+                                                    Question
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {FormQuestions}
                                         <div className="mt-20">
                                             <button type="submit" className="genric-btn">
-                                                post comment
+                                                submit
                                             </button>
                                         </div>
                                     </form>
@@ -222,7 +176,7 @@ class SurveyAddPage extends React.Component {
                         </div>
                     </div>
                 </section>
-                <Footer />
+                <Footer/>
             </>
         );
     }
