@@ -11,6 +11,8 @@ import {faChevronDown} from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import FormQuestion from "../../componets/blog/form/form_question";
 
 import Emitter from '../../services/emitter.service';
+import axios from "axios";
+import FormUpload from "../../componets/blog/form/form_upload";
 
 class SurveyAddPage extends React.Component {
 
@@ -28,13 +30,11 @@ class SurveyAddPage extends React.Component {
     componentDidMount() {
         document.body.classList.add('version-blog');
         document.body.classList.add('parent-active');
-        Emitter.on('GET_QUESTION_INPUT', (newValue) => this.setState({ questions: newValue }));
     }
 
     componentWillUnmount() {
         document.body.classList.remove('parent-active');
         document.body.classList.remove('version-blog');
-        Emitter.off('GET_QUESTION_INPUT');
     }
 
     addQuestion(question_no) {
@@ -53,28 +53,29 @@ class SurveyAddPage extends React.Component {
 
     handleForm(event) {
         event.preventDefault();
-        Emitter.emit('REQ_QUESTION', 1);
-        console.log(event);
-        // AuthService.login(this.state.email, this.state.password).then(
-        //     () => {
-        //         console.log('came back');
-        //         // this.props.history.push("/users");
-        //         // window.location.reload();
-        //     },
-        //     error => {
-        //         const resMessage =
-        //             (error.response &&
-        //                 error.response.data &&
-        //                 error.response.data.message) ||
-        //             error.message ||
-        //             error.toString();
-        //
-        //         this.setState({
-        //             loading: false,
-        //             message: resMessage
-        //         });
-        //     }
-        // );
+        this.submitForm();
+        setTimeout(() => {
+            window.location.href = '/blog/survey-home';
+        }, 3000);
+    }
+
+    submitForm() {
+        const survey = {
+            title: this.state.title,
+            start_date: this.state.start_date,
+            end_date: this.state.end_date,
+            description: this.state.description,
+            user_id: this.state.currentUser.id ? this.state.currentUser.id : null
+        }
+        return axios
+            .post("/survey-add", survey)
+            .then(response => {
+                console.log(response);
+                if(this.state.question_no > 0) {
+                    Emitter.emit('SUBMIT_QUESTION', response.data.id);
+                }
+                Emitter.emit('SUBMIT_UPLOAD', response.data.id);
+            });
     }
 
     render() {
@@ -101,8 +102,6 @@ class SurveyAddPage extends React.Component {
                                         <div className="row">
                                             <div className="col-lg-6">
                                                 <div className="form-group">
-                                                    <input type="hidden" name="user_id"
-                                                           value={currentUser ? currentUser.id : null}/>
                                                     <input
                                                         type="text"
                                                         className="form-control"
@@ -153,6 +152,11 @@ class SurveyAddPage extends React.Component {
                                                         placeholder="Enter description"
                                                     />
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-lg-4">
+                                                <FormUpload />
                                             </div>
                                         </div>
                                         <hr/>
