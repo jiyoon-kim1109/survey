@@ -1,12 +1,15 @@
 import React from "react";
-import HeaderBlogList from "../../componets/blog/header/header_blog_list";
-import HeroBlogListPage from "./hero_blog_list_page";
+import HeaderBlog from "../../componets/blog/header/header_blog";
 import Footer from "../../componets/multiple/footer";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHeart, faEye, faCommentDots} from "@fortawesome/free-solid-svg-icons";
-//import ReactPaginate from 'react-paginate';
+import ReactPaginate from 'react-paginate';
 import axios from 'axios'
 import {Link} from "react-router-dom";
+import PageTop from "../../componets/page_top";
+
+import AuthService from "../../services/auth.service";
+import Hero from "../../componets/multiple/hero/hero";
 
 class SurveyListPage extends React.Component {
 
@@ -15,6 +18,7 @@ class SurveyListPage extends React.Component {
         super(props);
         this.state = {
             posts: [],
+            currentUser: AuthService.getCurrentUser()
         }
     }
 
@@ -22,10 +26,9 @@ class SurveyListPage extends React.Component {
         document.body.classList.add('version-blog');
         document.body.classList.add('parent-active');
 
-        axios.get('/api/blog/index.json').then(response => {
-
+        axios.get('/survey-list').then(response => {
             this.setState({
-                posts: response.data.data
+                posts: response.data
             });
 
         });
@@ -43,11 +46,24 @@ class SurveyListPage extends React.Component {
         return (
             <>
 
-                <HeaderBlogList headerId={`header7`}/>
-                <HeroBlogListPage/>
+                <HeaderBlog headerId={`header7`}/>
+                <PageTop />
+                {/*<Hero heroClass={this.state.heroClass} />*/}
 
-                <section className="blog-post-list section-gap">
+                <section className="blog-post-list section-gap" style={{paddingTop: "20px"}}>
                     <div className="container">
+
+                        {/*<div className="row">*/}
+                        {/*    <div className="col-lg-12">*/}
+                        {/*        <div className="d-flex flex-column">*/}
+                        {/*            <button className="genric-btn2 d-block mr-0 ml-auto mb-20">*/}
+                        {/*                <Link to={"/blog/survey-add"} className="text-white">New Survey</Link>*/}
+                        {/*            </button>*/}
+                        {/*            <div className="alert-msg"/>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+
                         <div className="row">
 
                             {posts.map(post => (
@@ -62,9 +78,9 @@ class SurveyListPage extends React.Component {
                                                     src={post.thumbnail}
                                                     alt={post.title}
                                                 />
-                                                <a href="/index" className="genric-btn card-btn">
-                                                    Art & Fantacy
-                                                </a>
+                                                {/*<a href="/index" className="genric-btn card-btn">*/}
+                                                {/*    Art & Fantacy*/}
+                                                {/*</a>*/}
                                             </div>
                                             <div className="col-lg-8">
                                                 <div className="card-body">
@@ -84,8 +100,8 @@ class SurveyListPage extends React.Component {
                                                                 Post Written by
                                                                 <br/>
                                                                 <span className="author">
-                                <a href="/index">{post.author} </a>
-                              </span>
+                                                                    <a href="/index">{post.author} </a>
+                                                                </span>
                                                                 on {post.date}
                                                             </p>
                                                         </div>
@@ -124,43 +140,43 @@ class SurveyListPage extends React.Component {
                         </div>
                     </div>
 
-                    <nav aria-label="Page navigation" className="mt-0 mt-lg-3">
-                        <ul
-                            className="pagination flex justify-content-center"
-                            id="blog-post-sidebar"
-                        >
-                            <li className="page-item">
-                                <a className="page-link" href="/index" aria-label="Previous">
-                                    <span className="fa fa-long-arrow-alt=-left"/>
-                                </a>
-                            </li>
-                            <li className="page-item active">
-                                <a id="page-link1" className="page-link" href="/index">
-                                    01
-                                </a>
-                            </li>
-                            <li className="page-item">
-                                <a id="page-link2" className="page-link" href="/index">
-                                    02
-                                </a>
-                            </li>
-                            <li className="page-item">
-                                <a id="page-link3" className="page-link" href="/index">
-                                    03
-                                </a>
-                            </li>
-                            <li className="page-item">
-                                <a id="page-link4" className="page-link" href="/index">
-                                    04
-                                </a>
-                            </li>
-                            <li className="page-item">
-                                <a className="page-link" href="/index" aria-label="Next">
-                                    <span className="fa fa-long-arrow" alt="right"/>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {/*<nav aria-label="Page navigation" className="mt-0 mt-lg-3">*/}
+                    {/*    <ul*/}
+                    {/*        className="pagination flex justify-content-center"*/}
+                    {/*        id="blog-post-sidebar"*/}
+                    {/*    >*/}
+                    {/*        <li className="page-item">*/}
+                    {/*            <a className="page-link" href="/index" aria-label="Previous">*/}
+                    {/*                <span className="fa fa-long-arrow-alt=-left"/>*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="page-item active">*/}
+                    {/*            <a id="page-link1" className="page-link" href="/index">*/}
+                    {/*                01*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="page-item">*/}
+                    {/*            <a id="page-link2" className="page-link" href="/index">*/}
+                    {/*                02*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="page-item">*/}
+                    {/*            <a id="page-link3" className="page-link" href="/index">*/}
+                    {/*                03*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="page-item">*/}
+                    {/*            <a id="page-link4" className="page-link" href="/index">*/}
+                    {/*                04*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*        <li className="page-item">*/}
+                    {/*            <a className="page-link" href="/index" aria-label="Next">*/}
+                    {/*                <span className="fa fa-long-arrow" alt="right"/>*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*    </ul>*/}
+                    {/*</nav>*/}
 
                 </section>
 

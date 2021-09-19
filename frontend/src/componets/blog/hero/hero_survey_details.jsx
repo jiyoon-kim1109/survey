@@ -37,7 +37,7 @@ class HeroSurveyDetails extends React.Component {
     render() {
 
         const currentUser = this.state.currentUser;
-        console.log(currentUser);
+        // console.log(currentUser);
 
         const hero_section_img_style = {
             height: "400px",

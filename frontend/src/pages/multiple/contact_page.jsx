@@ -1,12 +1,9 @@
 import React from "react";
 import {Container, Row, Col, Form } from 'react-bootstrap';
-import Header from "../../componets/multiple/header/header";
-import PageTop from "../../componets/multiple/page_top";
+import HeaderBlog from "../../componets/blog/header/header_blog";
+import PageTop from "../../componets/page_top";
 import Map from "../../componets/multiple/map";
 import Footer from "../../componets/multiple/footer";
-
-import Logo1 from "../../assets/img/logo.png";
-import Logo2 from "../../assets/img/logo.png";
 
 class ContactPage extends React.Component {
 
@@ -29,7 +26,7 @@ class ContactPage extends React.Component {
 
     return (
       <>
-        <Header headerId={`header`} Logo1={Logo1} Logo2={Logo2} />
+        <HeaderBlog headerId={`header7`}/>
         <PageTop pageTitle="Contact Us" />
         <Map />
            <section className="contact-form-section section-gap">

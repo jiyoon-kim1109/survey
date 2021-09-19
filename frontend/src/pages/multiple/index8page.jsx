@@ -1,17 +1,13 @@
 import React from "react";
-import Header8 from "../../componets/multiple/header/header8";
+import HeaderBlog from "../../componets/blog/header/header_blog";
 import Hero8 from "../../componets/multiple/hero/hero8";
-import Brands from "../../componets/multiple/brands";
-import UniqueFeature from "../../componets/multiple/unique_feature";
-import Execution from "../../componets/multiple/execution";
-import About from "../../componets/multiple/about";
-import Cta from "../../componets/multiple/cta";
-import ImportantPoints from "../../componets/multiple/important_points";
-import Price from "../../componets/multiple/price";
-import ClientReview from "../../componets/multiple/client_review";
-import LatestBlog from "../../componets/multiple/latest_blog";
-import Contact from "../../componets/multiple/contact";
 import Footer from "../../componets/multiple/footer";
+import Hero6 from "../../componets/multiple/hero/hero6";
+import Hero5 from "../../componets/multiple/hero/hero5";
+import Hero9 from "../../componets/multiple/hero/hero9";
+import Hero10 from "../../componets/multiple/hero/hero10";
+import Hero4 from "../../componets/multiple/hero/hero4";
+import Hero3 from "../../componets/multiple/hero/hero3";
 
 class Index8Page extends React.Component {
 
@@ -24,50 +20,23 @@ class Index8Page extends React.Component {
     }
 
     render() {
-    return (
-      <div>
-        
-        <Header8 headerId={`header`}/>
-        
-        
-        <Hero8></Hero8>
-        
-        
-        <Brands></Brands>
-        
-        
-        <UniqueFeature></UniqueFeature>
-        
-        
-        <Execution></Execution>
-        
-        
-        <About></About>
-        
-        
-        <Cta></Cta>
-        
-        
-        <ImportantPoints></ImportantPoints>
-        
-        
-        <Price></Price>
-        
-        
-        <ClientReview></ClientReview>
-        
-        
-        <LatestBlog></LatestBlog>
-        
-        
-        <Contact></Contact>
-        
-        
-        <Footer></Footer>
-        
-      </div>
-    );
-  }
+        return (
+            <div>
+
+                <HeaderBlog headerId={`header7`}/>
+
+                <Hero3></Hero3>
+                <Hero8></Hero8>
+                <Hero6/>
+                <Hero5></Hero5>
+                <Hero9></Hero9>
+                <Hero10 />
+                <Hero4></Hero4>
+                <Footer></Footer>
+
+            </div>
+        );
+    }
 }
 
 export default Index8Page;

@@ -1,18 +1,15 @@
 import React from "react";
 
-import AuthService from "../../../services/auth.service";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
-import {faChevronDown} from "@fortawesome/free-solid-svg-icons/faChevronDown";
-
 import Emitter from '../../../services/emitter.service';
+import axios from "axios";
 
 class FormOption extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            option_no: 0
+            name: '',
+            order: 0
         }
     }
 
@@ -20,10 +17,17 @@ class FormOption extends React.Component {
         document.body.classList.add('version-blog');
         document.body.classList.add('parent-active');
 
-        Emitter.on('REQ_OPTION', (question_no) => {
-            console.log(question_no);
-            console.log(this.state);
-            // Emitter.emit('GET_OPTION_INPUT', this.state);
+        Emitter.on('SUBMIT_OPTION', (question_id) => {
+            const option = {
+                name: this.state.name,
+                order: this.state.order,
+                question_id: question_id
+            }
+            axios
+                .post("/option-add", option)
+                .then(response => {
+                    console.log(response);
+                });
         });
     }
 
@@ -37,13 +41,10 @@ class FormOption extends React.Component {
     componentWillUnmount() {
         document.body.classList.remove('parent-active');
         document.body.classList.remove('version-blog');
-        Emitter.off('REQ_OPTION');
+        Emitter.off('SUBMIT_OPTION');
     }
 
     render() {
-
-        const question_no = this.props.question_no;
-        const option_no = this.props.option_no;
 
         return (
             <>
@@ -53,7 +54,7 @@ class FormOption extends React.Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                name={'question[' + question_no + '][option][' + option_no + '][name]'}
+                                name={'name'}
                                 autoComplete="name"
                                 onChange={this.handleInputChange}
                                 placeholder="Enter Name"
@@ -65,7 +66,7 @@ class FormOption extends React.Component {
                         <div className="form-group">
                             <input type="text"
                                    className="form-control"
-                                   name={'question[' + question_no + '][option][' + option_no + '][order]'}
+                                   name={'order'}
                                    onChange={this.handleInputChange}
                                    placeholder="Enter Order: Ex) 1"
                                    required

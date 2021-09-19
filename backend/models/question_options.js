@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = require('../utils/database')
+const sequelize = require('../utils/database');
 
 const QuestionOption = sequelize.define('question_option', {
     id: {
@@ -18,7 +18,8 @@ const QuestionOption = sequelize.define('question_option', {
         primaryKey: true
     },
     question_id: {type: Sequelize.INTEGER, allowNull: false},
-    name: {type: Sequelize.STRING, allowNull: false}
+    name: {type: Sequelize.STRING, allowNull: false},
+    order: {type: Sequelize.INTEGER, allowNull: false}
 })
 
 module.exports = QuestionOption

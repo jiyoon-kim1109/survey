@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderBlogDetailsSideBar from "../../componets/blog/header/header_blog_details_side_bar";
+import HeaderBlogDetails from "../../componets/blog/header/header_blog";
 import HeroBlogDetailsSideBar from "../../componets/blog/hero/hero_blog_details_side_bar";
 import Footer from "../../componets/multiple/footer";
 import BlogSidebar from "../../componets/blog/blog_sidebar";
@@ -22,7 +22,7 @@ class BlogDetailsSideBarPage extends React.Component {
   render() {
     return (
       <>
-        <HeaderBlogDetailsSideBar headerId={`header7`}/>
+        <HeaderBlogDetails headerId={`header7`}/>
         <HeroBlogDetailsSideBar />
         <section className="blog-post section-gap">
           <div className="details-body">

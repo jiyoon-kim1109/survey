@@ -28,8 +28,8 @@ class DemoRequest extends React.Component {
                   name="name"
                   autoComplete="name"
                   placeholder="Enter your name"
-                  onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Enter your name'"
+                  onFocus="this.placeholder = ''"
+                  onBlur="this.placeholder = 'Enter your name'"
                   className="common-input mb-20 form-control"
                   required
                   type="text"
@@ -39,8 +39,8 @@ class DemoRequest extends React.Component {
                   autoComplete="email"
                   placeholder="Enter email address"
                   pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,63}$"
-                  onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Enter email address'"
+                  onFocus="this.placeholder = ''"
+                  onBlur="this.placeholder = 'Enter email address'"
                   className="common-input mb-20 form-control"
                   required
                   type="email"
@@ -49,8 +49,8 @@ class DemoRequest extends React.Component {
                   name="phone"
                   autoComplete="phone"
                   placeholder="Phone Number"
-                  onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Phone Number'"
+                  onFocus="this.placeholder = ''"
+                  onBlur="this.placeholder = 'Phone Number'"
                   className="common-input mb-20 form-control"
                   required
                   type="text"
@@ -59,8 +59,8 @@ class DemoRequest extends React.Component {
                   name="company-name"
                   autoComplete="company-name"
                   placeholder="Company Name"
-                  onfocus="this.placeholder = ''"
-                  onblur="this.placeholder = 'Company Name'"
+                  onFocus="this.placeholder = ''"
+                  onBlur="this.placeholder = 'Company Name'"
                   className="common-input mb-20 form-control"
                   required
                   type="text"

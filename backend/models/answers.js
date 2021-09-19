@@ -17,7 +17,7 @@ const Answer = sequelize.define('answer', {
         // For uniquely identify user.
         primaryKey: true
     },
-    question_option_id: {type: Sequelize.INTEGER, allowNull: false},
+    question_id: {type: Sequelize.INTEGER, allowNull: false},
     answer_numeric: {type: Sequelize.INTEGER, allowNull: true},
     answer_text: {type: Sequelize.STRING, allowNull: true},
     answer_yn: {type: Sequelize.BOOLEAN, allowNull: true}

@@ -75,7 +75,7 @@ class AnswerChart extends React.Component {
                             position: 'right',
                         },
                         title: {
-                            display: true,
+                            display: false,
                             text: '',
                         },
                     },

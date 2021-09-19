@@ -37,20 +37,14 @@ class Hero extends React.Component {
           <div className="row fullscreen align-items-center relative" style={this.state.fullscreen}>
             <div className="col-lg-6 content-wrap">
               <h1>
-                We Made our
-                <br /> Software 100% Errorless
+                Life Is Choice between
+                <br /> Birth and Death :)
               </h1>
-              <p>
-                The first is a non technical method which requires the use of
-                adware removal software. Download free adware and spyware
-                removal software and use advanced tools to help prevent getting
-                infected.
-              </p>
-              <Link to="/index" className="genric-btn2 mr-sm-3">
-                Start a project
+              <Link to="/blog/survey-add" className="genric-btn2 mr-sm-3">
+                New Survey
               </Link>
               <Link to="/index" className="genric-btn mt-4 mt-sm-0">
-                
+
                 View Pricing
               </Link>
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderBlogDetails from "../../componets/blog/header/header_blog_details";
+import HeaderBlogDetails from "../../componets/blog/header/header_blog";
 import HeroBlogDetails from "../../componets/blog/hero/hero_blog_details";
 import Footer from "../../componets/multiple/footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

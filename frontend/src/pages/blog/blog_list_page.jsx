@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderBlogList from "../../componets/blog/header/header_blog_list";
+import HeaderBlog from "../../componets/blog/header/header_blog";
 import HeroBlogListPage from "./hero_blog_list_page";
 import Footer from "../../componets/multiple/footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -43,7 +43,7 @@ class BlogListPage extends React.Component {
     return (
       <>
         
-        <HeaderBlogList headerId={`header7`}/>
+        <HeaderBlog headerId={`header7`}/>
         <HeroBlogListPage />
         
         <section className="blog-post-list section-gap">

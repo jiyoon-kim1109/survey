@@ -45,7 +45,7 @@ class SurveyDetailsPage extends React.Component {
             case 'numeric':
                 return <>
                     <div>
-                        <AnswerChart question={question} />
+                        <AnswerChart question={question}/>
                     </div>
                 </>
             case 'text':
@@ -57,7 +57,7 @@ class SurveyDetailsPage extends React.Component {
             case 'yn':
                 return <>
                     <div>
-                        <AnswerChart question={question} />
+                        <AnswerChart question={question}/>
                     </div>
                 </>
         }
@@ -97,7 +97,7 @@ class SurveyDetailsPage extends React.Component {
                         <div className="container">
                             <div className="mb-30 text-center">
                                 <img
-                                    src="/img/blog/blog-details-bg2.jpg"
+                                    src={post.main_image}
                                     className="img-fluid"
                                     alt=""
                                 />
@@ -108,9 +108,9 @@ class SurveyDetailsPage extends React.Component {
                                 </blockquote>) : (null)}
                             {post.questions ? (
                                 <div>
-                                    {post.questions.map(question => (
+                                    {post.questions.map((question, i) => (
                                         <div className={"mt-10"}>
-                                            <h4>{question.content}</h4>
+                                            <h4>{i + 1}. {question.content}</h4>
                                             {this.renderAnswer(question)}
                                         </div>
                                     ))}

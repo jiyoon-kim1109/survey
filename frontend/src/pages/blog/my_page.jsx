@@ -10,6 +10,7 @@ import PageTop from "../../componets/page_top";
 
 import AuthService from "../../services/auth.service";
 import Hero from "../../componets/multiple/hero/hero";
+import Moment from "react-moment";
 
 class MyPage extends React.Component {
 
@@ -78,7 +79,7 @@ class MyPage extends React.Component {
                                             <div className="col-lg-4">
                                                 <img
                                                     className="card-top-img"
-                                                    src={post.thumbnail}
+                                                    src={post.main_image}
                                                     alt={post.title}
                                                 />
                                                 {/*<a href="/index" className="genric-btn card-btn">*/}
@@ -100,18 +101,12 @@ class MyPage extends React.Component {
                                                     <div className="row">
                                                         <div className="col-lg-5">
                                                             <p className="mt-20">
-                                                                Post Written by
-                                                                <br/>
-                                                                <span className="author">
-                                                                    <a href="/index">{post.author} </a>
-                                                                </span>
-                                                                on {post.date}
+                                                                Posted on <Moment
+                                                                format="D MMM, YYYY">{post.createdAt}</Moment>
                                                             </p>
                                                         </div>
                                                         <div className="col-lg-5">
-                                                            <div className="mt-40 m-0-xs">
-
-
+                                                            <div className="mt-20 m-0-xs">
                                                                 <a href="/index" className="card-link">
                                                                     <FontAwesomeIcon className="mr-1" icon={faHeart}/>
                                                                     {post.like}
@@ -125,8 +120,6 @@ class MyPage extends React.Component {
                                                                                      icon={faCommentDots}/>
                                                                     {post.commentCounter}
                                                                 </a>
-
-
                                                             </div>
                                                         </div>
                                                     </div>

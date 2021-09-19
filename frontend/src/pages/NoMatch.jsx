@@ -1,9 +1,7 @@
 import React from "react";
-import Header from "../componets/multiple/header/header";
+import HeaderBlog from "../componets/blog/header/header_blog";
 import Footer from "../componets/multiple/footer";
 
-import Logo1 from "../assets/img/logo.png";
-import Logo2 from "../assets/img/logo.png";
 import ErrorImg from "../assets/img/error.png";
 
 export default class NoMatch extends React.Component{
@@ -11,7 +9,7 @@ export default class NoMatch extends React.Component{
     render() {
         return (
             <>
-                <Header headerId={`header`} Logo1={Logo1} Logo2={Logo2} />
+                <HeaderBlog headerId={`header7`}/>
                 {
                     /*====== ERROR PART START ======*/
                 }

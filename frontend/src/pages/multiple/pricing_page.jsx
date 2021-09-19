@@ -1,14 +1,25 @@
 import React from "react";
-import Header from "../../componets/multiple/header/header";
-import PageTop from "../../componets/multiple/page_top";
+import HeaderBlog from "../../componets/blog/header/header_blog";
+import PageTop from "../../componets/page_top";
 import Price from "../../componets/multiple/price";
 import Faq from "../../componets/multiple/faq";
 import Cta from "../../componets/multiple/cta";
 import Brands from "../../componets/multiple/brands";
 import Footer from "../../componets/multiple/footer";
 
-import Logo1 from "../../assets/img/logo.png";
-import Logo2 from "../../assets/img/logo.png";
+import StartExecution from "../../componets/multiple/start_execution";
+import ClientReview from "../../componets/multiple/client_review";
+import UniqueFeature from "../../componets/multiple/unique_feature";
+import Important from "../../componets/multiple/important";
+import Execution from "../../componets/multiple/execution";
+import DemoRequest from "../../componets/multiple/demo_request";
+import Feature from "../../componets/multiple/feature";
+import Stat from "../../componets/multiple/stat";
+import Social from "../../componets/multiple/social";
+import Contact from "../../componets/multiple/contact";
+import LatestBlog from "../../componets/multiple/latest_blog";
+import ImportantPoints from "../../componets/multiple/important_points";
+import Unique from "../../componets/multiple/unique";
 
 class PricingPage extends React.Component {
 
@@ -23,25 +34,37 @@ class PricingPage extends React.Component {
     }
 
     render() {
-    return (
-      <>
-        
-        <Header headerId={`header`} Logo1={Logo1} Logo2={Logo2} />
-        
-        <PageTop pageTitle="pricing" />
-        
-        <Price></Price>
-        
-        <Faq></Faq>
-        
-        <Cta></Cta>
-        
-        <Brands></Brands>
-        
-        <Footer></Footer>
-      </>
-    );
-  }
+        return (
+            <>
+
+                <HeaderBlog headerId={`header7`}/>
+
+                <PageTop pageTitle="pricing"/>
+                <Feature></Feature>
+                <Contact></Contact>
+                <LatestBlog></LatestBlog>
+                <Unique></Unique>
+                <StartExecution></StartExecution>
+                <ImportantPoints></ImportantPoints>
+                <ClientReview></ClientReview>
+                <UniqueFeature></UniqueFeature>
+                <Important></Important>
+                <DemoRequest></DemoRequest>
+                <Stat></Stat>
+                <Execution></Execution>
+                <Social></Social>
+                <Price></Price>
+
+                <Faq></Faq>
+
+                <Cta></Cta>
+
+                <Brands></Brands>
+
+                <Footer></Footer>
+            </>
+        );
+    }
 }
 
 export default PricingPage;

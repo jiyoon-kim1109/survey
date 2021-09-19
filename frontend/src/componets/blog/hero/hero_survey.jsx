@@ -69,8 +69,9 @@ class HeroSurvey extends React.Component {
                                         <div className="content flex justify-content-between">
 
                                             <div>
-                                                <a href="/blog/survey-add" className="genric-btn3">
-                                                    New Survey
+                                                <a href="/blog/survey-add" className="genric-btn3 text-white"
+                                                    style={{backgroundImage: "-webkit-linear-gradient(110deg, #7b10ff 0%, #974fff 100%)"}}>
+                                                    Add New Survey
                                                 </a>
                                                 <h1>
                                                     {post.title}

@@ -57,8 +57,8 @@ class HeroHeaderBlog extends React.Component {
                 <div className="col-lg-12">
                   <div className="content flex justify-content-between">
                     <div>
-                      <a href="/index" className="genric-btn3">
-                        Art & Fantacy
+                      <a href="/blog/survey-add" className="genric-btn3">
+                        New Survey
                       </a>
                       <h1>
                         The Idea Of God Is <br />

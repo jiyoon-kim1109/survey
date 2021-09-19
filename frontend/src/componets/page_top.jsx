@@ -32,26 +32,26 @@ class PageTop extends React.Component {
         return (
             <section className="cta-section gradient-bg">
                 <div className="container">
-                    <div className="row align-items-center justify-content-center text-center">
-                        <div className="col-lg-8">
-                            <h1 className="text-white mb-5">
-                                Life Is Choice between Birth and Death :)
-                            </h1>
-                            <div className="cta-btn">
-                                <a href="/blog/survey-add" className="ct-btn1 mr-sm-3 mb-sm-0 mb-3">
-                                    New Survey
+                    <div className="row d-flex justify-content-between">
+
+                        <h1 className="text-white mb-2">
+                            My Surveys
+                        </h1>
+                        <div className="cta-btn">
+                            <a href="/blog/survey-add" className="ct-btn1 mr-sm-3 mb-sm-0 mb-3">
+                                New Survey
+                            </a>
+                            {currentUser ? (
+                                <a onClick={this.logout} href="" className="ct-btn2 active">
+                                    Logout
                                 </a>
-                                {currentUser ? (
-                                    <a onClick={this.logout} href="" className="ct-btn2 active">
-                                        Logout
-                                    </a>
-                                ) : (
-                                    <a href="/auth/login" className="ct-btn2 active">
-                                        Sign in
-                                    </a>
-                                )}
-                            </div>
+                            ) : (
+                                <a href="/auth/login" className="ct-btn2 active">
+                                    Sign in
+                                </a>
+                            )}
                         </div>
+
                     </div>
                 </div>
             </section>

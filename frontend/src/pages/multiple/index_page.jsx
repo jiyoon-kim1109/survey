@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../componets/multiple/header/header";
+import HeaderBlog from "../../componets/blog/header/header_blog";
 import Hero from "../../componets/multiple/hero/hero";
 import Feature from "../../componets/multiple/feature";
 import Marketing from "../../componets/multiple/marketing";
@@ -13,9 +13,6 @@ import ClientReview from "../../componets/multiple/client_review";
 import LatestBlog from "../../componets/multiple/latest_blog";
 import Contact from "../../componets/multiple/contact";
 import Footer from "../../componets/multiple/footer";
-
-import Logo1 from "../../assets/img/logo.png";
-import Logo2 from "../../assets/img/logo.png";
 
 class IndexPage extends React.Component {
     constructor(props) {
@@ -37,7 +34,7 @@ class IndexPage extends React.Component {
     render() {
     return (
       <>
-        <Header headerId={`header`} Logo1={Logo1} Logo2={Logo2} />
+        <HeaderBlog headerId={`header7`}/>
         <Hero heroClass={this.state.heroClass} />
         <Feature />
         <Marketing />

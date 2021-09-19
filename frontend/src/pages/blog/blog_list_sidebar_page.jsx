@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderBlogHomeSidebar from "../../componets/blog/header/header_blog_home_sidebar";
+import HeaderBlog from "../../componets/blog/header/header_blog";
 import HeroBlogListPage from "./hero_blog_list_page";
 import Footer from "../../componets/multiple/footer";
 import BlogSidebar from "../../componets/blog/blog_sidebar";
@@ -45,7 +45,7 @@ class BlogListSidebarPage extends React.Component {
 
     return (
       <>
-        <HeaderBlogHomeSidebar headerId="header7" />
+        <HeaderBlog headerId="header7" />
         <HeroBlogListPage />
 
         <section className="blog-post-list section-gap">

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Header from "../componets/multiple/header/header";
+import HeaderBlog from "../componets/blog/header/header_blog";
 import Footer from "../componets/multiple/footer";
 
 class ComingSoon extends React.Component {
@@ -9,7 +9,7 @@ class ComingSoon extends React.Component {
         return ( 
           <>
 
-      <Header/>
+      <HeaderBlog/>
       {
         /*====== PAGE TITLE PART START ======*/
       }

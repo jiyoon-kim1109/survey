@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderBlogHome from "../../componets/blog/header/header_blog_home";
+import HeaderBlog from "../../componets/blog/header/header_blog";
 import HeroHeaderBlog from "../../componets/blog/hero/hero_header_blog";
 import Footer from "../../componets/multiple/footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -43,7 +43,7 @@ class BlogHomePage extends React.Component {
     return (
       <>
         
-        <HeaderBlogHome headerId={`header7`}/>
+        <HeaderBlog headerId={`header7`}/>
         
         
         <HeroHeaderBlog />

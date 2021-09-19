@@ -8,10 +8,10 @@ class FormAnswer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            question_id: '',
-            answer_numeric: 0,
-            answer_text: '',
-            answer_yn: ''
+            question_id: props.question.id,
+            answer_numeric: null,
+            answer_text: null,
+            answer_yn: null
         }
     }
 
@@ -26,6 +26,7 @@ class FormAnswer extends React.Component {
                 answer_text: this.state.answer_text,
                 answer_yn: this.state.answer_yn
             }
+            console.log(answer);
             axios
                 .post("/answer-add", answer)
                 .then(response => {
@@ -51,7 +52,7 @@ class FormAnswer extends React.Component {
                                 <input type="radio"
                                        className={"form-check-input"} value={option.id}
                                        onChange={this.handleInputChange}
-                                       name={"answers_numeric_"+option.question_id} id={""}/>
+                                       name={"answer_numeric"} id={""}/>
                                 <label htmlFor={"options" + option.question_id} className={"form-check-label"}>{option.name}</label>
                             </div>
                         </>
@@ -62,7 +63,7 @@ class FormAnswer extends React.Component {
                     <textarea
                         className="form-control"
                         onChange={this.handleInputChange}
-                        name={"answers_text_" + question.id}
+                        name={"answer_text"}
                         autoComplete="message"
                         id={"answersText" + question.id}
                         rows={2}
@@ -75,7 +76,8 @@ class FormAnswer extends React.Component {
                         <input type="radio"
                                className={"form-check-input"}
                                onChange={this.handleInputChange}
-                               name={"answers_yn_" + question.id}/>
+                               value={true}
+                               name={"answer_yn"}/>
                         <label htmlFor={"options" + question.id}
                                className={"form-check-label"}>Yes</label>
                     </div>
@@ -83,7 +85,8 @@ class FormAnswer extends React.Component {
                         <input type="radio"
                                className={"form-check-input"}
                                onChange={this.handleInputChange}
-                               name={"answers_yn_" + question.id}/>
+                               value={false}
+                               name={"answer_yn"}/>
                         <label htmlFor={"options" + question.id}
                                className={"form-check-label"}>No</label>
                     </div>
@@ -94,7 +97,7 @@ class FormAnswer extends React.Component {
     componentWillUnmount() {
         document.body.classList.remove('parent-active');
         document.body.classList.remove('version-blog');
-        Emitter.off('SUBMIT_OPTION');
+        Emitter.off('SUBMIT_ANSWER');
     }
 
     render() {
